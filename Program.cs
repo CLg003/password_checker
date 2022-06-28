@@ -32,7 +32,34 @@ namespace PasswordChecker
             if (Tools.Contains(password, specialChars)) {
                 score ++;
             }
-            Console.WriteLine(score);
+
+            if (password == "password" || password == "1234") {
+                score = 0;
+                Console.WriteLine($"Password cannot be '{password}'.");
+            }
+
+            switch (score) {
+                case >= 4:
+                    Console.WriteLine($"Password score: {score}");
+                    Console.WriteLine("Extremely strong password - you're a password whizz!");
+                    break;
+                case 3:
+                    Console.WriteLine($"Password score: {score}");
+                    Console.WriteLine("Strong password.");
+                    break;
+                case 2:
+                    Console.WriteLine($"Password score: {score}");
+                    Console.WriteLine("Medium strength password.");
+                    break;
+                case 1:
+                    Console.WriteLine($"Password score: {score}");
+                    Console.WriteLine("Weak password.");
+                    break;
+                default:
+                    Console.WriteLine($"Password score: {score}");
+                    Console.WriteLine("Your password does not meet the minimum requirements.");
+                    break;
+            }
     }
   }
 }
